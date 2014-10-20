@@ -1,11 +1,16 @@
 define(['angular'], function (angular) {
 
-    var start = function () {
-        var myApp = angular.module('myApp', []);
-        angular.bootstrap(document, ['myApp']);
-    }
-    
-    return {
-        start: start
-    };
+    var app = angular.module('myApp', ['ngRoute', 'ngAnimate']);
+    app.config(['$routeProvider', '$locationProvider',
+        function ($routeProvider, $locationProvider) {
+            $routeProvider
+            .when('/home', {
+                templateUrl: 'resources/view/about.tpl',
+                controller: ''
+            });
+    }]).controller('IndexController',['$scope', '$http', function ($scope, $http) {
+        $http.get('/angularjs/mock/menu.json').success(function (data, status) {
+            $scope.menus = data.data;
+        });
+    }]);
 });

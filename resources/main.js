@@ -1,11 +1,13 @@
 /**
 * »´æ÷require ≈‰÷√
 */
-requirejs.config({
+require.config({
     baseUrl: '/angularjs/resources/',
     paths: {
         'jquery': 'libs/jquery/jquery-1.11.1.min',
-        'angular': 'libs/angular/angular.min',
+        'angular': 'libs/angular/angular',
+        'ngRoute': 'libs/angular/angular-route.min',
+        'ngAnimate': 'libs/angular/angular-animate.min',
         'underscore': 'libs/underscore/underscore.min'
     },
     shim: {
@@ -18,10 +20,16 @@ requirejs.config({
         'angular': {
             deps: ['jquery'],
             exports: 'angular'
+        },
+        'ngRoute': {
+            deps: ['angular']
+        },
+        'ngAnimate': {
+            deps: ['angular']
         }
     }
 });
 
-define(['jquery', 'app'], function ($, app) {
-    app.start();
+define(['jquery', 'angular', 'ngRoute', 'ngAnimate', 'app'], function ($, angular) {
+     
 });
