@@ -9,7 +9,7 @@ define(['angular'], function (angular) {
                 controller: ''
             });
     }]).controller('IndexController',['$scope', '$http', function ($scope, $http) {
-        $http.get('/angularjs/mock/menu.json').success(function (data, status) {
+        $http.get('../mock/menu.json').success(function (data, status) {
             $scope.menus = data.data;
         });
     }]);

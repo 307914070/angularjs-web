@@ -2,7 +2,7 @@
 * È«¾Örequire ÅäÖÃ
 */
 require.config({
-    baseUrl: '/angularjs/resources/',
+    baseUrl: '../resources/',
     paths: {
         'jquery': 'libs/jquery/jquery-1.11.1.min',
         'angular': 'libs/angular/angular',
