@@ -1,5 +1,5 @@
 /**
-* »´æ÷require ≈‰÷√
+* require conifg
 */
 require.config({
     baseUrl: '../resources/',
@@ -8,7 +8,11 @@ require.config({
         'angular': 'libs/angular/angular',
         'ngRoute': 'libs/angular/angular-route.min',
         'ngAnimate': 'libs/angular/angular-animate.min',
-        'underscore': 'libs/underscore/underscore.min'
+        'underscore': 'libs/underscore/underscore.min',        
+        'Controllers': 'controllers/Controllers',
+        'Services': 'services/Services',
+        'AboutController': 'controllers/AboutController',
+        'AboutService': 'services/AboutService'
     },
     shim: {
         'jquery': {
@@ -30,6 +34,34 @@ require.config({
     }
 });
 
-define(['jquery', 'angular', 'ngRoute', 'ngAnimate', 'app'], function ($, angular) {
-     
+define(['jquery',
+        'angular',
+        'ngRoute',
+        'ngAnimate',
+        'Controllers',
+        'Services',
+        'AboutController',
+        'AboutService'],
+    function ($, angular) {
+		var app = angular.module('myApp', ['ngRoute', 'ngAnimate', 'Controllers', 'Services']);    
+	    
+	    
+	    app.controller('IndexController', ['$scope', '$http', function ($scope, $http) {
+	    	$http.get('./mock/menu.json').success(function (resDate) {
+	    		$scope.menus = resDate.data;
+	    	});
+	    }]);
+	    
+	    app.config(['$routeProvider', function ($routeProvider) {
+	    	$routeProvider
+	    	.when('/about', {
+	    		templateUrl: 'resources/view/about.tpl',
+	    		controller: 'AboutController'
+	    	})
+	    	.otherwise({
+	    		redirectTo: '/'
+	    	});
+	    }]);
+	    
+	    angular.bootstrap(document, ['myApp']);
 });
