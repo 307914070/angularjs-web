@@ -2,7 +2,7 @@
 * require conifg
 */
 require.config({
-    baseUrl: '../resources/',
+    baseUrl: './resources/',
     paths: {
         'jquery': 'libs/jquery/jquery-1.11.1.min',
         'angular': 'libs/angular/angular',
@@ -44,7 +44,6 @@ define(['jquery',
         'AboutService'],
     function ($, angular) {
 		var app = angular.module('myApp', ['ngRoute', 'ngAnimate', 'Controllers', 'Services']);    
-	    
 	    
 	    app.controller('IndexController', ['$scope', '$http', function ($scope, $http) {
 	    	$http.get('./mock/menu.json').success(function (resDate) {
