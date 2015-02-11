@@ -1,3 +1,7 @@
+body{
+    background: url(../img/bg/01.jpg) no-repeat;
+}
+
 header{
     height: 50px;
 }
@@ -6,3 +10,16 @@ section{
     height: 100%;
     scroll-y: auto;
 }
+
+@media screen and (max-width: 800px) {
+    div{
+        color:white
+    }
+}
+
+@media screen and (max-width: 600px) {
+    div{
+        color:red
+    }
+}
+
